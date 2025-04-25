@@ -3,6 +3,9 @@ from .models import Reservations
 
 
 class ReservationForm(forms.ModelForm):
+
+
+
     date = forms.DateField(
         input_formats=['%d/%m/%Y', '%d-%m-%Y', '%d.%m.%Y'],
         widget=forms.DateInput(attrs={'class': 'form-control', 'id': 'time', 'placeholder': 'Your Date'})

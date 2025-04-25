@@ -1,58 +1,42 @@
 {% load static %}
-<!-- Book A Table Section -->
-    <section id="book-a-table" class="book-a-table section">
+<section id="book-a-table" class="book-a-table">
+      <div class="container" data-aos="fade-up">
+          <div class="section-header">
+                <h2>Book A Table</h2>
+                <p>Book <span>Your Stay</span> With Us</p>
+          </div>
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Book A Table</h2>
-        <div><span>Book a</span> <span class="description-title">Table</span></div>
-      </div><!-- End Section Title -->
+          <div class="row g-0">
 
-      <div class="container">
+          <div class="col-lg-4 reservation-img" style="background-image: url({% static 'assets/img/reservation.jpg' %});" data-aos="zoom-out" data-aos-delay="200"></div>
 
-        <div class="row g-0" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-4 reservation-img" style="background-image: url({% static 'assets/img/reservation.jpg' %});"></div>
-
-          <div class="col-lg-8 d-flex align-items-center reservation-form-bg" data-aos="fade-up" data-aos-delay="200">
-              {% csrf_token %}
-            <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form">
-              <div class="row gy-4">
-                <div class="col-lg-4 col-md-6">
-                  {{ reservation.name }}
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  {{ reservation.email }}
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  {{ reservation.phone }}
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  {{ reservation.date }}
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  {{ reservation.time }}
-                </div>
-                <div class="col-lg-4 col-md-6">
-                  {{ reservation.number_guests }}
-                </div>
-              </div>
-
-              <div class="form-group mt-3">
-                {{ reservation.message }}
-              </div>
-
-              <div class="text-center mt-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
-                <button type="submit">Book a Table</button>
-              </div>
+          <div class="col-lg-8 d-flex align-items-center reservation-form-bg">
+              <form action="{% url 'home' %}" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+                  {% csrf_token %}
+                  <div class="row gy-4">
+                      {% for form_field in reservation %}
+                          {% if form_field.name != 'message' %}
+                              <div class="col-lg-4 col-md-6">
+                                    {{ form_field }}
+                                    <div class="validate">{{ field.errors }}</div>
+                              </div>
+                          {% endif %}
+                      {% endfor %}
+                  </div>
+                  <div class="form-group mt-3">
+                        {{ reservation.message }}
+                        <div class="validate">{{ reservation.message.errors }}</div>
+                  </div>
+                      <div class="mb-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+                      </div>
+                      <div class="text-center"><button type="submit">Book a Table</button></div>
             </form>
           </div><!-- End Reservation Form -->
 
         </div>
 
       </div>
-
-    </section><!-- /Book A Table Section -->
+    </section><!-- End Book A Table Section -->

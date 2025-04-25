@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'ckeditor',
-    'django_ckeditor_5'
+    'django_ckeditor_5',
+    'manager.apps.ManagerConfig',
+    'account.apps.AccountConfig'
 ]
 
 
@@ -140,6 +142,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+LOGIN_URL = 'account/login/'
 
 
 # Default primary key field type
