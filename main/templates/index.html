@@ -21,9 +21,11 @@
     <!-- Events Section -->
     {% include 'events.html' %}
 
-    <!-- Book A Table Section -->
-    {% include 'reservation.html' %}
 
+    {% if user_is_authenticated %}
+        <!-- Book A Table Section -->
+        {% include 'reservation.html' %}
+    {% endif %}
       <!-- Gallery Section -->
     {% include 'gallery.html' %}
 
