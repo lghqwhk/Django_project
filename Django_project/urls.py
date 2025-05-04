@@ -24,6 +24,7 @@ from main import views as main_views
 from manager import views as manager_views
 # from django.contrib.auth import views as auth_views
 from account import views as account_views
+from account.views import logout_view
 urlpatterns = [
         path('admin/', admin.site.urls),
         path('', main_views.index, name='home'),
@@ -34,7 +35,8 @@ urlpatterns = [
 
         path('account/register', account_views.UserRegistrationView.as_view(), name='register'),
 
-        path('account/logout', account_views.user_logout, name='logout'),
+        path('account/logout', account_views.logout, name='logout'),
+
 
 ]
 

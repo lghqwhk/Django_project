@@ -7,6 +7,7 @@ from django.contrib.auth import logout
 from pyexpat.errors import messages
 
 
+
 # Create your views here.
 class UserLoginView(LoginView):
     template_name = 'login.html'
@@ -23,6 +24,7 @@ class UserRegistrationView(CreateView):
     success_url = reverse_lazy('login')
 
 
-def user_logout(request):
+
+def logout_view(request):
     logout(request)
-    return redirect('login')
+    return render(request, 'logout.html')

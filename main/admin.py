@@ -1,9 +1,23 @@
 from django.contrib import admin
-from .models import Category, Items, Contacts
+from .models import Category, Items, Contacts, Specials
 from django.utils.safestring import mark_safe
 
 
 admin.site.register(Contacts)
+@admin.register(Specials)
+class SpecialsAdmin(admin.ModelAdmin):
+    list_display = ('id','sort','title', 'desc', 'photo_img_tag', 'is_visible')
+    list_editable = ('sort', 'is_visible' )
+
+    def photo_img_tag(self, obj):
+        if obj.photo:
+            return mark_safe(f"<img src='{obj.photo.url}' width='50px'>")
+
+
+
+
+
+
 
 @admin.register(Items)
 class ItemAdmin(admin.ModelAdmin):
