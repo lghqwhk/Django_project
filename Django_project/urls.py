@@ -21,10 +21,12 @@ from django.conf.urls.static import static
 from django.urls import path
 from Django_project import settings
 from main import views as main_views
+from main.views import specials_view
 from manager import views as manager_views
 # from django.contrib.auth import views as auth_views
 from account import views as account_views
 from account.views import logout_view
+
 urlpatterns = [
         path('admin/', admin.site.urls),
         path('', main_views.index, name='home'),
@@ -37,6 +39,7 @@ urlpatterns = [
 
         path('account/logout', account_views.logout, name='logout'),
 
+        path('specials/', specials_view, name='specials'),
 
 ]
 

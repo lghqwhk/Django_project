@@ -2,14 +2,14 @@
  <nav id="navmenu" class="navmenu">
           <ul>
 
-            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="hero" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#menu">Menu</a></li>
-            <li><a href="#specials">Specials</a></li>
+            <li><a href="specials">Specials</a></li>
             <li><a href="#events">Events</a></li>
             <li><a href="#chefs">Chefs</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#book-a-table">Book a Table</a></li>
+            <li><a href="reservation">Book a Table</a></li>
               <li><a href="{% url 'login' %}"> Login</a></li>
               {% if user|is_manager_tag %}
               <li><a href={% url 'manager' %}>Manager</a></li>
