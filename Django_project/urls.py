@@ -21,11 +21,11 @@ from django.conf.urls.static import static
 from django.urls import path
 from Django_project import settings
 from main import views as main_views
-from main.views import specials_view
+from main.views import specials_view, index
 from manager import views as manager_views
 # from django.contrib.auth import views as auth_views
 from account import views as account_views
-from account.views import logout_view
+from account.views import user_logout
 
 urlpatterns = [
         path('admin/', admin.site.urls),
@@ -37,9 +37,11 @@ urlpatterns = [
 
         path('account/register', account_views.UserRegistrationView.as_view(), name='register'),
 
-        path('account/logout', account_views.logout, name='logout'),
+
+        path('account/logout', account_views.user_logout, name='logout'),
 
         path('specials/', specials_view, name='specials'),
+
 
 ]
 

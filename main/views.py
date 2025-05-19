@@ -26,13 +26,8 @@ def specials_view(request):
     return render(request, 'specials.html', {'specials': specials})
 
 
-from django.shortcuts import render
-from .models import Specials
 
-def home_view(request):
-    specials = Specials.objects.filter(is_visible=True).order_by('sort')
-    print("SPECIALS:", specials)  # 👈 debug print
-    return render(request, 'home.html', {'specials': specials})
+
 
 
 

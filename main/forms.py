@@ -3,9 +3,6 @@ from .models import Reservations
 
 
 class ReservationForm(forms.ModelForm):
-
-
-
     date = forms.DateField(
         input_formats=['%d/%m/%Y', '%d-%m-%Y', '%d.%m.%Y'],
         widget=forms.DateInput(attrs={'class': 'form-control', 'id': 'time', 'placeholder': 'Your Date'})
@@ -35,7 +32,3 @@ class ReservationForm(forms.ModelForm):
             'number_guests': forms.NumberInput(attrs={'class': 'form-control', 'id': "people", 'placeholder': "# of people", 'data-rule': "minlen:1", 'data-msg': "Please enter at least 1 chars"}),
             'message': forms.Textarea(attrs={'class': 'form-control', 'name': "message", 'rows': "5", 'placeholder': "Message"})
         }
-
-
-
-
