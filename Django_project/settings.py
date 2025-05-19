@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import dj_database_url
-
+from django.contrib import staticfiles
 load_dotenv('.env')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
