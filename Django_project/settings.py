@@ -121,8 +121,8 @@ elif MODE == 'PROD':
     DATABASE_URL = os.environ.get('DATABASE_URL')
     db_config = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, conn_health_checks=True)
     DATABASES['default'].update(db_config)
-
-
+else:
+    raise Exception('MODE must be LOCAL or PROD')
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
