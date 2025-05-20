@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import logging
+import sys
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -33,6 +34,21 @@ DEBUG = False
 MODE = os.environ.get('MODE')
 
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', '*')]
+
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout,
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}
 
 
 # Application definition

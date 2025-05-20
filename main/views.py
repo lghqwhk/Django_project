@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Category, Items, Specials
 from .forms import ReservationForm
 from django.contrib import messages
+import logging
 
 
 def index(request):
@@ -27,7 +28,6 @@ def specials_view(request):
 
 
 
-
-
-
+logger = logging.getLogger(__name__)
+logger.debug("This view was reached!")
 
