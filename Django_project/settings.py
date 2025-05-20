@@ -102,14 +102,13 @@ WSGI_APPLICATION = 'Django_project.wsgi.application'
 
 
 DATABASES = {}
-
-# if MODE == 'LOCAL':
-#     DATABASES['default'] = {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# elif MODE == 'PROD':
-DATABASES['default'] = {
+if MODE == 'LOCAL':
+    DATABASES['default'] = {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+    }
+elif MODE == 'PROD':
+    DATABASES['default'] = {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': os.environ.get('DB_HOST'),
         'NAME': os.environ.get('DB_NAME'),
@@ -117,9 +116,11 @@ DATABASES['default'] = {
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
     }
-DATABASE_URL = os.environ.get('DATABASE_URL')
-db_config = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, conn_health_checks=True)
-DATABASES['default'].update(db_config)
+    DATABASE_URL = os.environ.get('DATABASE_URL')
+    db_config = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, conn_health_checks=True)
+    DATABASES['default'].update(db_config)
+else:
+    raise Exception('MODE must be LOCAL or PROD')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -161,8 +162,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = 'static/img'
+MEDIA_ROOT = BASE_DIR / 'img'
 
 
 LOGIN_URL = 'account/login/'
