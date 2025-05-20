@@ -179,7 +179,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 LOGIN_URL = 'account/login/'
 
 
-MEDIA_URL = 'img/'
+MEDIA_URL = 'media/img/'
 MEDIA_ROOT = BASE_DIR / 'img'
 
 # Default primary key field type
