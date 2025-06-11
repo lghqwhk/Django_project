@@ -44,14 +44,8 @@ class Contacts(models.Model):
 
 
 
-
-
-
-
-
 class Reservations(models.Model):
     phone_regex = RegexValidator(regex=r'^\+?(38)?\d{10}$')
-
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=100, validators=[phone_regex])
     email = models.EmailField()
@@ -78,9 +72,6 @@ class Specials(models.Model):
     photo = models.ImageField(upload_to='specials/')
     is_visible = models.BooleanField(default=True)
     sort = models.IntegerField(default=0)
-
-
-
 
     def __str__(self):
         return self.title

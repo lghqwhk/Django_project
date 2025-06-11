@@ -22,10 +22,14 @@
     {% include 'events.html' %}
 
 
-    {% if user_is_authenticated %}
-        <!-- Book A Table Section -->
-        {% include 'reservation.html' %}
-    {% endif %}
+
+    {% include 'menu_item_list.html' %}
+
+
+
+    <!-- Book A Table Section -->
+    {% include 'reservation.html' %}
+
       <!-- Gallery Section -->
     {% include 'gallery.html' %}
 
