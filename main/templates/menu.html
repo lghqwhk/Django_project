@@ -1,21 +1,21 @@
-{#<section id="menu" class="menu">#}
-{#    <div class="container" data-aos="fade-up">#}
-{#        <div>#}
-{#            {% if messages %}#}
-{#                <ul class="messages">#}
-{#                    {% for message in messages %}#}
-{#                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
-{#                    {% endfor %}#}
-{#                </ul>#}
-{#            {% endif %}#}
-{#        </div>#}
-{#        <div class="section-header">#}
-{#            <h2></h2>#}
-{#            <p>Check Our <span>Yummy Menu</span></p>#}
-{#        </div>#}
-{##}
-{#        {% include 'menu_categories_list.html' %}#}
-{#        {% include 'menu_item_list.html' %}#}
-{##}
-{#      </div>#}
-{#</section>#}
+<section id="menu" class="menu">
+    <div class="container" data-aos="fade-up">
+        <div>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="section-header">
+            <h2></h2>c
+            <p>Check Our <span>Yummy Menu</span></p>
+        </div>
+
+        {% include 'menu_categories_list.html' %}
+        {% include 'menu_item_list.html' %}
+
+      </div>
+</section>

@@ -1,9 +1,23 @@
-{#<ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">#}
-{#    {% for category in categories %}#}
-{#        <li class="nav-item">#}
-{#            <a class="nav-link {% if forloop.first %} active show {% endif %}" data-bs-toggle="tab" data-bs-target="#menu-{{ category.slug }}">#}
-{#                <h4>{{ category }}</h4>#}
-{#            </a>#}
-{#        </li>#}
-{#    {% endfor %}#}
-{#</ul>#}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Items</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .item { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+        .price { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Available Items</h1>
+    {% for item in items %}
+        <div class="item">
+            <h2>{{ item.name }}</h2>
+            <p>{{ item.description }}</p>
+            <p class="price">${{ item.price }}</p>
+        </div>
+    {% empty %}
+        <p>No items found.</p>
+    {% endfor %}
+</body>
+</html>

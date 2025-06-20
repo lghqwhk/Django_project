@@ -1,27 +1,35 @@
-{#<div class="tab-content" data-aos="fade-up" data-aos-delay="300">#}
-{#    {% for category in categories %}#}
-{#        <div class="tab-pane fade {% if forloop.first %} active show {% endif %}" id="menu-{{ category.slug }}">#}
-{#            <div class="tab-header text-center">#}
-{#                <p>Menu</p>#}
-{#                <h3>{{ category }}</h3>#}
-{#            </div>#}
-{##}
-{#            <div class="row gy-5">#}
-{#                {% for item in category %}#}
-{#                    <div class="col-lg-4 menu-item">#}
-{#                        <a href="{{ item.photo.url }}" class="glightbox">#}
-{#                            <img src="{{ item.photo.url }}" class="menu-img img-fluid" alt="">#}
-{#                        </a>#}
-{#                        <h4>{{ dish }}</h4>#}
-{#                        <p class="ingredients">#}
-{#                            {{ item.desc }}#}
-{#                        </p>#}
-{#                        <p class="price">#}
-{#                            {{ item.price|floatformat:2 }}#}
-{#                        </p>#}
-{#                   </div>#}
-{#                {% endfor %}#}
-{#            </div>#}
-{#        </div>#}
-{#    {% endfor %}#}
-{#</div>#}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Items by Category</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .category { margin-bottom: 40px; }
+        .item { margin-left: 20px; padding: 10px 0; border-bottom: 1px dashed #ccc; }
+        .price { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Items by Category</h1>
+
+    {% for category in categories %}
+        <div class="category">
+            <h2>{{ category.name }}</h2>
+
+            {% if category.items.all %}
+                {% for item in category.items.all %}
+                    <div class="item">
+                        <strong>{{ item.name }}</strong><br>
+                        <em>{{ item.description }}</em><br>
+                        <span class="price">${{ item.price }}</span>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No items in this category.</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No categories found.</p>
+    {% endfor %}
+</body>
+</html>

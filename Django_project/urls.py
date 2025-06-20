@@ -43,6 +43,9 @@ urlpatterns = [
         path('specials/', specials_view, name='specials'),
 
 
+
+
+
 ]
 
 if settings.DEBUG:

@@ -6,8 +6,12 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 def is_manager(user):
     return user.groups.filter(name='manager').exists()
 
+
+def manager_home(request):
+    return render(request, 'manager.html')
+
 @login_required(login_url='login')
 @user_passes_test(is_manager)
 # Create your views here.
 def index(request):
-    return render(request, 'manager/manager.html')
+    return render(request, 'manager.html')
